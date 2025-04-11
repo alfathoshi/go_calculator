@@ -3,9 +3,28 @@ package main
 import "fmt"
 
 func main() {
+	fmt.Println("=== Kalkulator Multifungsi ===")
+	fmt.Println("1. Kalkulator Basic")
+	fmt.Println("2. Kalkulator Suhu")
+	fmt.Println("3. Kalkulator Mata Uang")
+	fmt.Print("Pilih opsi (1/2/3): ")
 
-	// Basic Calculator 
+	var choice int
+	fmt.Scan(&choice)
 
+	switch choice {
+	case 1:
+		basicCalculator()
+	case 2:
+		temperatureConverter()
+	case 3:
+		currencyConverter()
+	default:
+		fmt.Println("Pilihan gak valid.")
+	}
+}
+
+func basicCalculator() {
 	var a, b float64
 	var op string
 
@@ -32,12 +51,12 @@ func main() {
 	default:
 		fmt.Println("Operator gak valid.")
 	}
+}
 
-	// Temperature Calculator
-
+func temperatureConverter() {
 	var temp float64
 	var unit string
-	
+
 	fmt.Print("Masukkan suhu (contoh: 30): ")
 	fmt.Scan(&temp)
 	fmt.Print("Masukkan satuan asal (C, F, K): ")
@@ -56,9 +75,9 @@ func main() {
 	default:
 		fmt.Println("Satuan gak dikenal.")
 	}
+}
 
-	// Currency Calculator
-
+func currencyConverter() {
 	const (
 		usdToIdr = 16000.0
 		eurToIdr = 17500.0
@@ -82,7 +101,7 @@ func main() {
 			result = amount / usdToIdr
 		} else if to == "EUR" {
 			result = amount / eurToIdr
-		} else if to == "IDR" {
+		} else {
 			result = amount
 		}
 	case "USD":
@@ -90,7 +109,7 @@ func main() {
 			result = amount * usdToIdr
 		} else if to == "EUR" {
 			result = (amount * usdToIdr) / eurToIdr
-		} else if to == "USD" {
+		} else {
 			result = amount
 		}
 	case "EUR":
@@ -98,7 +117,7 @@ func main() {
 			result = amount * eurToIdr
 		} else if to == "USD" {
 			result = (amount * eurToIdr) / usdToIdr
-		} else if to == "EUR" {
+		} else {
 			result = amount
 		}
 	default:
